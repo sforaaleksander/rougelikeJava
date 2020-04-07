@@ -19,4 +19,13 @@ public class Player extends Field{
         return coords;
     }
 
+    public void setCoords(Coords coords){
+        this.coords = coords;
+    }
+
+    public void playerMove(Coords coords){
+        int y = this.coords.getposY() + coords.getposY();
+        int x = this.coords.getposX() + coords.getposX();
+        this.setCoords(new Coords(y, x));
+    }
 }

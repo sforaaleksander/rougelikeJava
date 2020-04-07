@@ -14,6 +14,7 @@ public class WorldMap {
         this.height = height;
         this.board = createWorldMap(height, width);
         this.fieldsList = new ArrayList<>();
+        
     }
 
     public int getWidth() {
@@ -46,8 +47,6 @@ public class WorldMap {
             for (int x = 0; x < width; x++) {
                 if (y == 0 || y == height - 1 || x == 0 || x == width - 1) {
                     newBoard[y][x] = new ObstField("#", "Frame", new Coords(y, x));
-                } else if (y == player.getCoords().getposY() && x == player.getCoords().getposX()) {
-                    newBoard[y][x] = player;
                 } else {
                     newBoard[y][x] = new WalkField(",", "Grass", new Coords(y, x));
                 }
@@ -55,5 +54,9 @@ public class WorldMap {
             }
         }
         return newBoard;
+    }
+
+    public void placeOnMap(Field field){
+        getBoard()[field.getCoords().getposY()][field.getCoords().getposX()] = field;
     }
 }
