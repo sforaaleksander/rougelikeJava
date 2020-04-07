@@ -1,7 +1,3 @@
-<<<<<<< HEAD:src/Coords.java
-
-=======
->>>>>>> a2e5dc6f797132aca9f67c5943621be000a4debd:Coords.java
 public class Coords {
     private int posY;
     private int posX;

@@ -1,7 +1,3 @@
-<<<<<<< HEAD:src/UI.java
-
-=======
->>>>>>> a2e5dc6f797132aca9f67c5943621be000a4debd:UI.java
 public class UI {
 
     public static void displayMap(WorldMap map) {
