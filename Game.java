@@ -13,12 +13,14 @@ class Game extends KeyAdapter {
     public Game(){
         this.player= new Player();
     }
-
+    
 
     @Override
     public void keyPressed(KeyEvent event) {
         char ch = event.getKeyChar();
+        WorldMap worldMap1 = new WorldMap(20, 40);
 
+        player.setCurrentMap(worldMap1);
         System.out.println((int) ch);
 
         switch (ch) {
@@ -35,5 +37,7 @@ class Game extends KeyAdapter {
                 player.playerMove(RIGHT);
                 break;
         }
+        worldMap1.placeOnMap(player);
+        UI.displayMap(player.getCurrentMap());
     }
 }
