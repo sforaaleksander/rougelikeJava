@@ -6,7 +6,7 @@ public class WorldMap {
     public WorldMap (int height, int width){
         this.width = width;
         this.height = height;
-        this.board = createWorldMap(width, height);
+        this.board = createWorldMap(height, width);
     }
 
     public int getWidth(){
@@ -25,10 +25,12 @@ public class WorldMap {
         Field[][] newBoard = new Field[height][width];
         for (int y = 0; y < height; y++){
             for (int x = 0; x <width; x++){
-                if ( y == 0 || y == height || x == 0 || x == width) {
+                if ( y == 0 || y == height-1 || x == 0 || x == width-1) {
                     newBoard[y][x] = new ObstField("#", "Frame", new Coords(y,x));
+                } else {
+                    newBoard[y][x] = new WalkField(",", "Grass", new Coords(y,x));
                 }
-                newBoard[y][x] = new WalkField(",", "Grass", new Coords(y,x));
+                
             }
         }
         return newBoard;
