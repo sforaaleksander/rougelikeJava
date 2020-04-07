@@ -1,4 +1,7 @@
+<<<<<<< HEAD:src/WorldMap.java
 
+=======
+>>>>>>> a2e5dc6f797132aca9f67c5943621be000a4debd:WorldMap.java
 public class WorldMap {
     private Field[][] board;
     private int width;

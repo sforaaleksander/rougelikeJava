@@ -1,35 +1,35 @@
+<<<<<<< HEAD:src/Engine.java
 
+=======
+// // package src;
+>>>>>>> a2e5dc6f797132aca9f67c5943621be000a4debd:Engine.java
 
-// import javax.swing.*;
-// import java.awt.event.KeyAdapter;
-// import java.awt.event.KeyEvent;
+// // import javax.swing.*;
+// // import java.awt.event.KeyAdapter;
+// // import java.awt.event.KeyEvent;
 
 
 // public class Engine {
-
-//     public static void playerMove(){
-
 //     Coords W = new Coords(-1, 0);
 //     Coords S = new Coords(1, 0);
 //     Coords A = new Coords(0, -1);
 //     Coords D = new Coords(0, 1);
-//     }
 
 
-//     public static void walk() {
+//     public static void playerMove() {
 //         JTextField textField = new JTextField();
 
-//         textField.addKeyListener(new Game());
-//         JFrame jframe = new JFrame();
+// //         textField.addKeyListener(new Game());
+// //         JFrame jframe = new JFrame();
 
-//         jframe.add(textField);
-//         jframe.setSize(100, 100);
-//         jframe.setVisible(true);
-//     }
-// }
+// //         jframe.add(textField);
+// //         jframe.setSize(100, 100);
+// //         jframe.setVisible(true);
+// //     }
+// // }
 
 
-// class Game extends KeyAdapter {
+// // class Game extends KeyAdapter {
     
 //     @Override
 //     public void keyPressed(KeyEvent event) {
@@ -40,8 +40,7 @@
 
 //         switch(ch) {
 //             case 'w':
-//                 // code block
-//                 // Hero.moveUp()
+//                 playerMove
 
 //                 break;
 //             case 's':
@@ -58,4 +57,5 @@
 //                 break;   
 //         }
 //     }
+// }
 // }
