@@ -9,6 +9,17 @@ public abstract class Field {
         this.symbol = symbol;
         this.name = name;
         this.coords = coords;
+    }
 
+    public String getSymbol(){
+        return symbol;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public Coords getCoords(){
+        return coords;
     }
 }
