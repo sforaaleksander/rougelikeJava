@@ -1,4 +1,3 @@
-package src;
 
 public class HarmField extends Field{
 

@@ -1,4 +1,3 @@
-package src;
 
 public class WorldMap {
     private Field[][] board;

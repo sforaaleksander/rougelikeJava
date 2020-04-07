@@ -1,5 +1,3 @@
-package src;
-
 public abstract class Field {
     private String symbol;
     private String name;
