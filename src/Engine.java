@@ -6,17 +6,13 @@ import java.awt.event.KeyEvent;
 
 
 public class Engine {
-
-    public static void playerMove(){
-
     Coords W = new Coords(-1, 0);
     Coords S = new Coords(1, 0);
     Coords A = new Coords(0, -1);
     Coords D = new Coords(0, 1);
-    }
 
 
-    public static void walk()) {
+    public static void playerMove() {
         JTextField textField = new JTextField();
 
         textField.addKeyListener(new Game());
@@ -40,8 +36,7 @@ class Game extends KeyAdapter {
 
         switch(ch) {
             case 'w':
-                // code block
-                // Hero.moveUp()
+                playerMove
 
                 break;
             case 's':
