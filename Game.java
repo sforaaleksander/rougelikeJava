@@ -12,6 +12,8 @@ class Game extends KeyAdapter {
 
     public Game(){
         this.player= new Player();
+        WorldMap worldTradeCenter = new WorldMap(20, 40);
+
     }
 
 
@@ -35,5 +37,8 @@ class Game extends KeyAdapter {
                 player.playerMove(RIGHT);
                 break;
         }
+        UI.displayMap(worldTradeCenter);
+
     }
+
 }
