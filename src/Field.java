@@ -1,5 +1,5 @@
 package src;
 
-public class Field {
+public abstract class Field {
 
 }
