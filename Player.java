@@ -12,6 +12,7 @@ public class Player extends GameObject{
         int x = this.getCoords().getposX() + coords.getposX();
         Coords newCoords = new Coords(y, x);
         this.setCoords(newCoords);
+        getCurrentMap().getBoard()[y][x].getGameObject().interact(this);
 
     }
 
@@ -24,7 +25,7 @@ public class Player extends GameObject{
 	}
 
     @Override
-    public void interact() {
+    public void interact(Player player) {
         // none
 
     }

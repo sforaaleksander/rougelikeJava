@@ -26,5 +26,5 @@ public abstract class GameObject {
         this.coords = coords;
     }
 
-    public abstract void interact();
+    public abstract void interact(Player player);// add parameter Player
 }

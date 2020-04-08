@@ -5,7 +5,8 @@ public class ObstField extends GameObject{
     }
 
     @Override
-    public void interact() {
+    public void interact(Player player) {
             // move player back
+            
     }
 }
