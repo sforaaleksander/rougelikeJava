@@ -46,17 +46,16 @@ public class WorldMap {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (y == 0 || y == height - 1 || x == 0 || x == width - 1) {
-                    newBoard[y][x] = new ObstField("#", "Frame", new Coords(y, x));
+                    newBoard[y][x] = new Field(new ObstField("#", "Frame", new Coords(y, x)));
                 } else {
-                    newBoard[y][x] = new WalkField(",", "Grass", new Coords(y, x));
+                    newBoard[y][x] = new Field(new ObstField(".", "Grass", new Coords(y, x)));
                 }
-
             }
         }
         return newBoard;
     }
 
     public void placeOnMap(Field field){
-        getBoard()[field.getCoords().getposY()][field.getCoords().getposX()] = field;
+        getBoard()[field.getGameObject().getCoords().getposY()][field.getGameObject().getCoords().getposX()] = field;
     }
 }

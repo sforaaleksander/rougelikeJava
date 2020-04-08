@@ -1,23 +1,12 @@
-public abstract class Field {
-    private String symbol;
-    private String name;
-    private Coords coords;
+public class Field {
+    private GameObject gameObject;
 
-    public Field(String symbol, String name, Coords coords){
-        this.symbol = symbol;
-        this.name = name;
-        this.coords = coords;
+    public Field(GameObject gameObject){
+        this.gameObject = gameObject;
     }
 
-    public String getSymbol(){
-        return symbol;
+    public GameObject getGameObject(){
+        return gameObject;
     }
 
-    public String getName(){
-        return name;
-    }
-
-    public Coords getCoords(){
-        return coords;
-    }
 }

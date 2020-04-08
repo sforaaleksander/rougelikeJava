@@ -13,9 +13,7 @@ class Game extends KeyAdapter {
     public Game(){
         this.player= new Player();
         WorldMap worldTradeCenter = new WorldMap(20, 40);
-
-    }
-    
+    }    
 
     @Override
     public void keyPressed(KeyEvent event) {
@@ -39,7 +37,7 @@ class Game extends KeyAdapter {
                 player.playerMove(RIGHT);
                 break;
         }
-        worldMap1.placeOnMap(player);
+        worldMap1.placeOnMap(new Field(player));
         UI.displayMap(player.getCurrentMap());
     }
 
