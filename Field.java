@@ -9,4 +9,7 @@ public class Field {
         return gameObject;
     }
 
+    public void setGameObject(GameObject go){
+        this.gameObject = go;
+    }
 }

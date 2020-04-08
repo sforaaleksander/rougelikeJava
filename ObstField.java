@@ -5,7 +5,7 @@ public class ObstField extends GameObject{
     }
 
     @Override
-    public boolean interact(Player player) {
-            return false;
+    public void interact(Player player) {
+            //return false;
     }
 }
