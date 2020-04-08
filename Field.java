@@ -20,7 +20,7 @@ public class Field {
         this.currentObject = this.defaultObject;
 	}
 
-    public void setCurrnetObject(GameObject currentObject){
+    public void setCurrentObject(GameObject currentObject){
         this.currentObject = currentObject;
     }
 }

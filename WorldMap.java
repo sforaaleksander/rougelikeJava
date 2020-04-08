@@ -48,7 +48,7 @@ public class WorldMap {
                 if (y == 0 || y == height - 1 || x == 0 || x == width - 1) {
                     newBoard[y][x] = new Field(new ObstField("#", "Frame", new Coords(y, x)));
                 } else {
-                    newBoard[y][x] = new Field(new ObstField(".", "Grass", new Coords(y, x)));
+                    newBoard[y][x] = new Field(new WalkField(".", "Grass", new Coords(y, x)));
                 }
             }
         }
@@ -56,10 +56,6 @@ public class WorldMap {
     }
 
     public void placeOnMap(Field field){
-        getBoard()[field.getGameObject().getCoords().getposY()][field.getGameObject().getCoords().getposX()] = field;
-    }
-
-    public void setPlayerFieldOnNewField(){
-        
+        getBoard()[field.getCurrentObject().getCoords().getposY()][field.getCurrentObject().getCoords().getposX()] = field;
     }
 }

@@ -2,10 +2,10 @@ import javax.swing.*;
 
 
 public class Engine {
-    public static void jFrame() {
+    public static void jFrame(Game giera) {
         JTextField textField = new JTextField();
 
-        textField.addKeyListener(new Game());
+        textField.addKeyListener(giera);
         JFrame jframe = new JFrame();
 
         jframe.add(textField);

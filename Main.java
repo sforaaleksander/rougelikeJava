@@ -1,9 +1,9 @@
 public class Main{
     public static void main(String args[]){
 
+        Game giera = new Game();
         IO.initializeScanner();
-        // Game game = new Game();
-        Engine.jFrame();
+        Engine.jFrame(giera);
         
     }
 }
