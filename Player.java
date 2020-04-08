@@ -10,8 +10,8 @@ public class Player extends GameObject{
     public void playerMove(Coords coords){
         int y = this.getCoords().getposY() + coords.getposY();
         int x = this.getCoords().getposX() + coords.getposX();
-        Coords newCoords = new Coords(y, x);
-        this.setCoords(newCoords);
+        this.getCoords().setposY(y);
+        this.getCoords().setposX(x);
         GameObject nextStep = getCurrentMap().getBoard()[y][x].getGameObject();
         
     }

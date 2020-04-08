@@ -15,5 +15,13 @@ public class Coords {
         return posX;
     }
 
+    public void setposY(int posY){
+        this.posY = posY;
+    }
+
+    public void setposX(int posX){
+        this.posY = posX;
+        }
+
 
 }
