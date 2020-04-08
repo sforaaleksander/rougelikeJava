@@ -5,7 +5,7 @@ public class WalkField extends GameObject{
     }
 
 	@Override
-	public void interact() {
+	public void interact(Player player) {
 		// walk X D
 		
 	}
