@@ -39,6 +39,9 @@ class Game extends KeyAdapter {
                 break;
         }
         //currentMap.placeOnMap(new Field(player));
+
+        player.getLastField().setToDefault();
+        
         UI.displayMap(player.getCurrentMap());
     }
 

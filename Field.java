@@ -1,5 +1,7 @@
 public class Field {
-    private GameObject gameObject;
+    private GameObject currentObject;
+    private GameObject defaultObject;
+
 
     public Field(GameObject gameObject){
         this.gameObject = gameObject;
@@ -8,5 +10,8 @@ public class Field {
     public GameObject getGameObject(){
         return gameObject;
     }
+
+	public void setToDefault() {
+	}
 
 }
