@@ -34,5 +34,5 @@ public abstract class GameObject {
         this.name = name;
     }
 
-    public abstract void interact(Player player);// add parameter Player
+    public abstract void interact(Player player);
 }

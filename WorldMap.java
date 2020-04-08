@@ -3,7 +3,6 @@ import java.util.List;
 
 public class WorldMap {
     private Field[][] board;
-    private Player player;
     private int width;
     private int height;
     private List<Field> fieldsList;
@@ -14,7 +13,6 @@ public class WorldMap {
         this.height = height;
         this.board = createWorldMap(height, width);
         this.fieldsList = new ArrayList<>();
-        
     }
 
     public int getWidth() {
@@ -37,9 +35,6 @@ public class WorldMap {
         return board;
     }
 
-    public Player getPlayer(){
-        return player;
-    }
 
     public Field[][] createWorldMap(int height, int width) {
         Field[][] newBoard = new Field[height][width];
@@ -56,6 +51,6 @@ public class WorldMap {
     }
 
     public void placeOnMap(Field field){
-        getBoard()[field.getCurrentObject().getCoords().getposY()][field.getCurrentObject().getCoords().getposX()] = field;
+        getBoard()[field.getCurrentObject().getCoords().getPosY()][field.getCurrentObject().getCoords().getPosX()] = field;
     }
 }

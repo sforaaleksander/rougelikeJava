@@ -7,21 +7,19 @@ public class Coords {
         this.posX = posX;
     }
 
-    public int getposY(){
+    public int getPosY(){
         return posY;
     }
 
-    public int getposX(){
+    public int getPosX(){
         return posX;
     }
 
-    public void setposY(int posY){
+    public void setPosY(int posY){
         this.posY = posY;
     }
 
-    public void setposX(int posX){
-        this.posY = posX;
+    public void setPosX(int posX){
+        this.posX = posX;
         }
-
-
 }

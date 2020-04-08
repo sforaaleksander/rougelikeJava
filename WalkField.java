@@ -6,8 +6,7 @@ public class WalkField extends GameObject{
 
 	@Override
 	public void interact(Player player) {
-		//player.getCurrentMap().getBoard()[player.getLastField().getGameObject().getCoords().getposY()][player.getLastField().getGameObject().getCoords().getposX()]
-		
+        player.getLastField().setToDefault();		
 	}
 
 }
