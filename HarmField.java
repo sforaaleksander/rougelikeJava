@@ -12,7 +12,7 @@ public class HarmField extends GameObject{
     }
 
     @Override
-    public void interact() {
+    public void interact(Player player) {
         // take players HP
     }
 }

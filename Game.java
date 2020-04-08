@@ -9,18 +9,19 @@ class Game extends KeyAdapter {
     private static final Coords RIGHT = new Coords(0, 1);
     private List<WorldMap> maps;
     private Player player;
-    private WorldMap worldMap;
+    private WorldMap currentMap;
 
     public Game(){
-        this.player= new Player();
-        this.worldMap = new WorldMap(20, 40);
+        this.player = new Player();
+        this.currentMap = new WorldMap(20, 40);
+        this.currentMap.placeOnMap(new Field(player));
     }    
 
     @Override
     public void keyPressed(KeyEvent event) {
         char ch = event.getKeyChar();
 
-        player.setCurrentMap(worldMap);
+        player.setCurrentMap(currentMap);
         System.out.println((int) ch);
 
         switch (ch) {
@@ -37,7 +38,7 @@ class Game extends KeyAdapter {
                 player.playerMove(RIGHT);
                 break;
         }
-        worldMap.placeOnMap(new Field(player));
+        //currentMap.placeOnMap(new Field(player));
         UI.displayMap(player.getCurrentMap());
     }
 

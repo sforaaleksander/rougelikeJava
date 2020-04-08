@@ -12,8 +12,8 @@ public class Player extends GameObject{
         int x = this.getCoords().getposX() + coords.getposX();
         Coords newCoords = new Coords(y, x);
         this.setCoords(newCoords);
-        getCurrentMap().getBoard()[y][x].getGameObject().interact(this);
-
+        GameObject nextStep = getCurrentMap().getBoard()[y][x].getGameObject();
+        
     }
 
 	public void setCurrentMap(WorldMap worldMap) {
