@@ -14,6 +14,10 @@ public abstract class GameObject {
         return symbol;
     }
 
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
     public String getName() {
         return name;
     }
@@ -24,6 +28,10 @@ public abstract class GameObject {
 
     public void setCoords(Coords coords) {
         this.coords = coords;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public abstract void interact(Player player);// add parameter Player

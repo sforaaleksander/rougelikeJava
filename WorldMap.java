@@ -58,4 +58,8 @@ public class WorldMap {
     public void placeOnMap(Field field){
         getBoard()[field.getGameObject().getCoords().getposY()][field.getGameObject().getCoords().getposX()] = field;
     }
+
+    public void setPlayerFieldOnNewField(){
+        
+    }
 }
