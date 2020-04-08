@@ -7,6 +7,6 @@ public class ObstField extends GameObject{
     @Override
     public void interact(Player player) {
             // move player back
-            
+            player.setCoords(coords);
     }
 }
