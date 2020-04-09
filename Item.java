@@ -1,4 +1,4 @@
-public abstract class Item extends GameObject{
+public class Item extends GameObject{
 
     public Item(Coords coords) {
         super("\u25C8", Colours.CYAN , "Diamond", coords);
