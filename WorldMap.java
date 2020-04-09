@@ -14,6 +14,7 @@ public class WorldMap {
         this.height = height;
         this.board = createWorldMap(height, width);
         this.fieldsList = new ArrayList<>();
+
     }
 
     public int getWidth() {
@@ -24,18 +25,17 @@ public class WorldMap {
         return height;
     }
 
-    public List<Field> getFieldsList(){
+    public List<Field> getFieldsList() {
         return fieldsList;
     }
 
-    public void addToFieldsList(Field field){
+    public void addToFieldsList(Field field) {
         fieldsList.add(field);
     }
 
     public Field[][] getBoard() {
         return board;
     }
-
 
     public Field[][] createWorldMap(int height, int width) {
         Field[][] newBoard = new Field[height][width];
@@ -48,12 +48,45 @@ public class WorldMap {
                 }
             }
         }
-        newBoard[9][9] = new Field(new HarmField("X", Colours.PURPLE_BACKGROUND, "DZIURA", new Coords(9, 9), 1));
+        summonGameObjects(newBoard);
         return newBoard;
     }
 
-    public void placeOnMap(Field field){
-        getBoard()[field.getCurrentObject().getCoords().getPosY()][field.getCurrentObject().getCoords().getPosX()] = field;
+    public void summonGameObjects(Field[][] board) {
+        summonHarmFields(board);
+    }
+
+    public void summonHarmFields(Field[][] board) {
+        int[] randomPair = randomPair();
+        board[randomPair[0]][randomPair[1]] = new Field(new HarmField("\u2592", Colours.RED_BACKGROUND_BRIGHT, "Lava",
+                new Coords(randomPair[0], randomPair[1]), 1));
+    }
+
+    public void setCurrentOnMap(GameObject gameObject) {
+        getBoard()[gameObject.getCoords().getPosY()][gameObject.getCoords().getPosX()].setCurrentObject(gameObject);
+    }
+
+    public void setDefaultOnMap(GameObject gameObject) {
+        getBoard()[gameObject.getCoords().getPosY()][gameObject.getCoords().getPosX()].setDefaultObject(gameObject);
+    }
+
+    public Coords randomPlacementOnMap(GameObject gameObject) {
+        Coords randomCoords = generateRandomCoords();
+        gameObject.getCoords().setPosY(randomCoords.getPosY());
+        gameObject.getCoords().setPosX(randomCoords.getPosX());
+        return new Coords(randomCoords.getPosY(), randomCoords.getPosX());
+    }
+
+    public Coords generateRandomCoords() {
+        int randomPosY = Engine.randomIntFromRange(1, height);
+        int randomPosX = Engine.randomIntFromRange(1, width);
+        return new Coords(randomPosY, randomPosX);
+    }
+
+    public int[] randomPair() {
+        int randomPosY = Engine.randomIntFromRange(1, height-1);
+        int randomPosX = Engine.randomIntFromRange(1, width-1);
+        return new int[] { randomPosY, randomPosX };
     }
 
     public int getRequiredDiamonds() {
