@@ -6,8 +6,8 @@ public class WorldMap {
     private int width;
     private int height;
     private List<Field> fieldsList;
-    private int requiredDiamonds; /// TODO sprawdzanie czy gracz zebrał wszyskie diamenty na mapie (czyli czy gracz ma tyle diamentow ile mapa wymaga zeby przejsc poziom)
-    
+    private int requiredDiamonds; /// TODO sprawdzanie czy gracz zebrał wszyskie diamenty na mapie (czyli czy
+                                  /// gracz ma tyle diamentow ile mapa wymaga zeby przejsc poziom)
 
     public WorldMap(int height, int width) {
         this.width = width;
@@ -54,17 +54,20 @@ public class WorldMap {
 
     public void summonGameObjects(Field[][] board) {
         summonHarmFields(board);
-        //summonItems(board);
+        summonItems(board);
 
     }
 
-    private void summonItems(Field[][] board2) {
+    private void summonItems(Field[][] board) {
         int[] randomPair = randomPair();
-        board[randomPair[0]][randomPair[1]] = new Field(new Item(new Coords(randomPair[0], randomPair[1])), new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair[0], randomPair[1])));
+        board[randomPair[0]][randomPair[1]] = new Field(new Item(new Coords(randomPair[0], randomPair[1])),
+                new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair[0], randomPair[1])));
         int[] randomPair2 = randomPair();
-        board[randomPair[0]][randomPair[1]] = new Field(new Item(new Coords(randomPair2[0], randomPair2[1])), new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair2[0], randomPair2[1])));
+        board[randomPair2[0]][randomPair2[1]] = new Field(new Item(new Coords(randomPair2[0], randomPair2[1])),
+                new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair2[0], randomPair2[1])));
         int[] randomPair3 = randomPair();
-        board[randomPair[0]][randomPair[1]] = new Field(new Item(new Coords(randomPair3[0], randomPair3[1])), new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair3[0], randomPair3[1])));
+        board[randomPair3[0]][randomPair3[1]] = new Field(new Item(new Coords(randomPair3[0], randomPair3[1])),
+                new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair3[0], randomPair3[1])));
     }
 
     public void summonHarmFields(Field[][] board) {
@@ -89,14 +92,14 @@ public class WorldMap {
     }
 
     public Coords generateRandomCoords() {
-        int randomPosY = Engine.randomIntFromRange(1, height);
-        int randomPosX = Engine.randomIntFromRange(1, width);
+        int randomPosY = Engine.randomIntFromRange(1, height - 1);
+        int randomPosX = Engine.randomIntFromRange(1, width - 1);
         return new Coords(randomPosY, randomPosX);
     }
 
     public int[] randomPair() {
-        int randomPosY = Engine.randomIntFromRange(1, height-1);
-        int randomPosX = Engine.randomIntFromRange(1, width-1);
+        int randomPosY = Engine.randomIntFromRange(1, height - 1);
+        int randomPosX = Engine.randomIntFromRange(1, width - 1);
         return new int[] { randomPosY, randomPosX };
     }
 

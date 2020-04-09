@@ -1,7 +1,7 @@
 public class Item extends GameObject{
 
     public Item(Coords coords) {
-        super("\u25C8", Colours.CYAN , "Diamond", coords);
+        super("\u25C6", Colours.CYAN , "Diamond", coords);
 
     }
 

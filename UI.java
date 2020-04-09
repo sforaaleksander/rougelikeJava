@@ -14,14 +14,14 @@ public class UI {
         String hpResult = "HP: ";
         String collectedDiamonds = "DIAMONDS: ";
         for (int i =0; i<player.getHp();i++){
-            hpResult += Colours.RED + "\u25C6 " + Colours.RESET;
+            hpResult += Colours.RED + "\u2764 " + Colours.RESET;
         }
 
         collectedDiamonds += 
-        player.getCollectedDiamonds() + "/" + player.getCurrentMap().getRequiredDiamonds();
+        player.getCollectedDiamonds() + "/" + player.getCurrentMap().getRequiredDiamonds()+ " ";
 
         for (int i =0; i<player.getCollectedDiamonds();i++){
-            collectedDiamonds += Colours.CYAN + "\u25C8 " + Colours.RESET;
+            collectedDiamonds += Colours.CYAN + "\u25C6 " + Colours.RESET;
         }
         String concatenatedResult = hpResult + "\n" + collectedDiamonds;
         System.out.println(concatenatedResult);
