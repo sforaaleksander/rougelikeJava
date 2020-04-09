@@ -23,7 +23,7 @@ class Game extends KeyAdapter {
     private Map<String, WorldMap> createListofLevels() {
         Map<String, WorldMap> listOfLevels = new HashMap<>();
         for (int i = 0; i < 3; i++) {
-            listOfLevels.put("Stage" + (i + 1), new WorldMap(5 + 2 * i, 6 + 2 * i, 3 + i, 1 + i));
+            listOfLevels.put("Stage" + (i + 1), new WorldMap(5 + 2 * i, 6 + 2 * i, 3 + i, 1 + i, (2*i+4)));
         }
         return listOfLevels;
     }
@@ -33,8 +33,6 @@ class Game extends KeyAdapter {
         Engine.clearScreen();
 
         char ch = event.getKeyChar();
-        System.out.println((int) ch);
-
         switch (ch) {
             case 'w':
                 player.playerMove(Coords.UP);
@@ -49,7 +47,7 @@ class Game extends KeyAdapter {
                 player.playerMove(Coords.RIGHT);
                 break;
         }
-        // player.getCurrentMap().getBoard()[][].setCurrentObject(player);
+
         for (ActiveObject activeObject : currentMap.getActiveObjects()) {
             activeObject.performAct();
         }

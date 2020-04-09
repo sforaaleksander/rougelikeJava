@@ -1,5 +1,5 @@
 
-public class Diamond extends GameObject{
+public class Diamond extends GameObject implements VanishingObject{
 
 	public Diamond(Coords coords) {
 		super("\u25C6", Colours.CYAN , "Diamond", coords);

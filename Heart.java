@@ -1,5 +1,5 @@
 
-public class Heart extends GameObject {
+public class Heart extends GameObject implements VanishingObject{
     public Heart(Coords coords) {
         super("\u2764", Colours.RED, "Life", coords);
         // TODO Auto-generated constructor stub

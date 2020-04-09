@@ -10,22 +10,25 @@ public class WorldMap {
     private int numberOfMosquitos;
     private int numberOfLavas;
     private int numberOfHearts;
+    private int numberOfSwamps;
     private List<ActiveObject> activeObjects;
 
     public WorldMap(int numberOfMosquitos, int numberOfDiamonds, int numberOfLavas,
-            int numberOfHearts) {
-        height =  20;
-        width = 40;
+            int numberOfHearts, int numberOfSwamps) {
+        height = 30;
+        width = 90;
         this.board = createWorldMap(height, width);
         this.numberOfDiamonds = numberOfDiamonds;
         this.numberOfHearts = numberOfHearts;
         this.numberOfLavas = numberOfLavas;
         this.numberOfMosquitos = numberOfMosquitos;
+        this.numberOfSwamps = numberOfSwamps;
         this.activeObjects = new ArrayList<>();
         summonHearts();
         summonLavas();
         summonDiamonds();
         summonMosquitos();
+        summonSwamps();
         this.takenFields = new ArrayList<>();
     }
 
@@ -71,14 +74,15 @@ public class WorldMap {
         return newBoard;
     }
 
-    // TODO make one method and checking fieldsTaken List
+    // TODO: Make a more abstract method suitable for all objects
+    // TODO: Check list of takenFields when adding
+
     private void summonMosquitos() {
         for (int i = 0; i < numberOfMosquitos; i++) {
             int[] randomPair = randomPair();
             Mosquito komar = new Mosquito(this);
             board[randomPair[0]][randomPair[1]] = new Field(komar, new Grass(new Coords(randomPair[0], randomPair[1])));
-            // komar.setCurrentMap(this);
-            board[randomPair[0]][randomPair[1]] = new Field(new Grass(new Coords(randomPair[0], randomPair[1])), new Grass(new Coords(randomPair[0], randomPair[1])));
+            board[randomPair[0]][randomPair[1]].setDefaultObject(new Grass(new Coords(randomPair[0], randomPair[1])));
             activeObjects.add(komar);
         }
     }
@@ -91,6 +95,16 @@ public class WorldMap {
         }
     }
 
+    private void summonSwamps() {
+        for (int i = 0; i < numberOfSwamps; i++) {
+            int[] randomPair = randomPair();
+            Swamp bagno = new Swamp(this);
+            board[randomPair[0]][randomPair[1]] = new Field(bagno);
+            board[randomPair[0]][randomPair[1]].setDefaultObject(new Grass(new Coords(randomPair[0], randomPair[1])));
+            activeObjects.add(bagno);
+        }
+    }
+
     private void summonHearts() {
         for (int i = 0; i < numberOfHearts; i++) {
             int[] randomPair4 = randomPair();
@@ -99,7 +113,7 @@ public class WorldMap {
         }
     }
 
-    public void summonLavas() {
+    private void summonLavas() {
         for (int i = 0; i < numberOfLavas; i++) {
             int[] randomPair = randomPair();
             board[randomPair[0]][randomPair[1]] = new Field(new Lava(new Coords(randomPair[0], randomPair[1])));
