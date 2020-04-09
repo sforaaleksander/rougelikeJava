@@ -21,6 +21,11 @@ public class Player extends GameObject {
         this.hp -= damage;
     }
 
+    public void plusHp(int plus){
+        this.hp += plus;
+    }
+
+
     public Field getLastField(){
         return lastField;
     }

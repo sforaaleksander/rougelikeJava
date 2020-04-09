@@ -68,6 +68,9 @@ public class WorldMap {
         int[] randomPair3 = randomPair();
         board[randomPair3[0]][randomPair3[1]] = new Field(new Item(new Coords(randomPair3[0], randomPair3[1])),
                 new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair3[0], randomPair3[1])));
+        int[] randomPair4 = randomPair();
+        board[randomPair4[0]][randomPair4[1]] = new Field(new Item("\u2764", Colours.RED, "Life",new Coords(randomPair4[0], randomPair4[1])),
+                new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair4[0], randomPair4[1])));
     }
 
     public void summonHarmFields(Field[][] board) {

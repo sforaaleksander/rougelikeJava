@@ -13,7 +13,12 @@ public class Item extends GameObject{
     @Override
     public void interact(Player player) {
         // TODO Auto-generated method stub
-        player.setCollectedDiamonds(player.getCollectedDiamonds()+1);
+        if (this.getName().equals("Life")) {
+            player.plusHp(1);
+        } else if (this.getName().equals("Diamond")) {
+            player.setCollectedDiamonds(player.getCollectedDiamonds()+1);
+        }
+        
         player.getLastField().setToDefault();
 
 
