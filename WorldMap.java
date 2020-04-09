@@ -76,8 +76,8 @@ public class WorldMap {
     }
 
     public Coords generateRandomCoords() {
-        int randomPosY = Engine.randomIntFromRange(1, height);
-        int randomPosX = Engine.randomIntFromRange(1, width);
+        int randomPosY = Engine.randomIntFromRange(1, height-1);
+        int randomPosX = Engine.randomIntFromRange(1, width-1);
         return new Coords(randomPosY, randomPosX);
     }
 
