@@ -78,6 +78,7 @@ public class WorldMap {
             Mosquito komar = new Mosquito(this);
             board[randomPair[0]][randomPair[1]] = new Field(komar, new Grass(new Coords(randomPair[0], randomPair[1])));
             // komar.setCurrentMap(this);
+            board[randomPair[0]][randomPair[1]].setDefaultObject(new Grass(new Coords(randomPair[0], randomPair[1])));
             activeObjects.add(komar);
         }
     }
