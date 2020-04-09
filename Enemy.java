@@ -1,3 +1,5 @@
+
+
 public class Enemy extends GameObject implements ActiveObject {
     private Field lastField;
     private WorldMap currentMap;
@@ -29,18 +31,27 @@ public class Enemy extends GameObject implements ActiveObject {
 
     @Override
     public void performAct() {
+        
         setLastField(getCurrentMap().getBoard()[this.getCoords().getPosY()][this.getCoords().getPosX()]);
         Coords[] listOfCoords = new Coords[] { Coords.RIGHT, Coords.LEFT, Coords.DOWN, Coords.UP };
-        Coords randomCoords = listOfCoords[Engine.randomIntFromRange(0, 3)];
+        Coords randomCoords;
+        int nextY, nextX;
+        do {
+            randomCoords = listOfCoords[Engine.randomIntFromRange(0, 4)];
+            nextY = this.getCoords().getPosY() + randomCoords.getPosY();
+            nextX = this.getCoords().getPosX() + randomCoords.getPosX();
+             
+        } while (!(nextY > 0 && nextY < getCurrentMap().getHeight()-1 && nextX > 0 && nextX <getCurrentMap().getWidth() - 1 ));
 
-        int nextY = this.getCoords().getPosY() + randomCoords.getPosY();
-        int nextX = this.getCoords().getPosX() + randomCoords.getPosX();
         this.getCoords().setPosY(nextY);
         this.getCoords().setPosX(nextX);
-
+        boolean nextField = currentMap.getBoard()[nextY][nextX].getCurrentObject() instanceof Grass;
+        if (nextField){
+            this.lastField.setToDefault();
+        }
         currentMap.getBoard()[this.getCoords().getPosY()][this.getCoords().getPosX()].setCurrentObject(this);
-
-        this.lastField.setToDefault();
+        
+        
 
         // getCurrentMap().getBoard()[nextY][nextX].getCurrentObject().interact(this);
 
