@@ -6,7 +6,8 @@ public class WorldMap {
     private int width;
     private int height;
     private List<Field> fieldsList;
-
+    private int requiredDiamonds; /// TODO sprawdzanie czy gracz zebrał wszyskie diamenty na mapie (czyli czy gracz ma tyle diamentow ile mapa wymaga zeby przejsc poziom)
+    
 
     public WorldMap(int height, int width) {
         this.width = width;
@@ -53,5 +54,9 @@ public class WorldMap {
 
     public void placeOnMap(Field field){
         getBoard()[field.getCurrentObject().getCoords().getPosY()][field.getCurrentObject().getCoords().getPosX()] = field;
+    }
+
+    public int getRequiredDiamonds() {
+        return requiredDiamonds;
     }
 }

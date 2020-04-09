@@ -10,10 +10,20 @@ public class UI {
     }
 
     public static void bottomDisplay(Player player){
+        //TODO ZROBIC 2 OSOBNE METODY Z PARAMETREM PLAYER DO GENEROWANIA OSOBNO HP I OSOBNO DIAMENTOW
         String hpResult = "HP: ";
+        String collectedDiamonds = "DIAMONDS: ";
         for (int i =0; i<player.getHp();i++){
-            hpResult += "\u25C6 ";
+            hpResult += Colours.RED + "\u25C6 " + Colours.RESET;
         }
-        System.out.println(hpResult);
+
+        collectedDiamonds += 
+        player.getCollectedDiamonds() + "/" + player.getCurrentMap().getRequiredDiamonds();
+
+        for (int i =0; i<player.getCollectedDiamonds();i++){
+            collectedDiamonds += Colours.CYAN + "\u25C8 " + Colours.RESET;
+        }
+        String concatenatedResult = hpResult + "\n" + collectedDiamonds;
+        System.out.println(concatenatedResult);
     }
 }
