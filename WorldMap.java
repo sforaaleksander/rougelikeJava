@@ -3,19 +3,19 @@ import java.util.List;
 
 public class WorldMap {
     private Field[][] board;
-    private int width;
-    private int height;
+    private static int width;
+    private static int height;
     private List<Field> takenFields;
     private int numberOfDiamonds;
     private int numberOfMosquitos;
     private int numberOfLavas;
     private int numberOfHearts;
-    private List<GameObject> activeObjects;
+    private List<ActiveObject> activeObjects;
 
-
-    public WorldMap(int height, int width, int numberOfMosquitos, int numberOfDiamonds, int numberOfLavas, int numberOfHearts) {
-        this.width = width;
-        this.height = height;
+    public WorldMap(int numberOfMosquitos, int numberOfDiamonds, int numberOfLavas,
+            int numberOfHearts) {
+        height =  20;
+        width = 40;
         this.board = createWorldMap(height, width);
         this.numberOfDiamonds = numberOfDiamonds;
         this.numberOfHearts = numberOfHearts;
@@ -45,6 +45,10 @@ public class WorldMap {
         takenFields.add(field);
     }
 
+    public List<ActiveObject> getActiveObjects() {
+        return activeObjects;
+    }
+
     public Field[][] getBoard() {
         return board;
     }
@@ -66,11 +70,12 @@ public class WorldMap {
         }
         return newBoard;
     }
-    //TODO make one method and checking fieldsTaken List 
+
+    // TODO make one method and checking fieldsTaken List
     private void summonMosquitos() {
         for (int i = 0; i < numberOfMosquitos; i++) {
             int[] randomPair = randomPair();
-            Mosquito komar = new Mosquito(new Coords(randomPair[0], randomPair[1]), this);
+            Mosquito komar = new Mosquito(this);
             board[randomPair[0]][randomPair[1]] = new Field(komar, new Grass(new Coords(randomPair[0], randomPair[1])));
             // komar.setCurrentMap(this);
             activeObjects.add(komar);
@@ -115,7 +120,7 @@ public class WorldMap {
         return new Coords(randomCoords.getPosY(), randomCoords.getPosX());
     }
 
-    public Coords generateRandomCoords() {
+    public static Coords generateRandomCoords() {
         int randomPosY = Engine.randomIntFromRange(1, height - 1);
         int randomPosX = Engine.randomIntFromRange(1, width - 1);
         return new Coords(randomPosY, randomPosX);

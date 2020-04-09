@@ -11,17 +11,19 @@ class Game extends KeyAdapter {
     private Player player;
     private WorldMap currentMap;
 
-    public Game(){
+    public Game() {
         listOfLevels = createListofLevels();
         this.currentMap = listOfLevels.get("Stage1");
         this.player = new Player(currentMap);
         // this.player.setCurrentMap(listOfLevels.get("Stage1"));
-    }    
+        UI.displayMap(player.getCurrentMap());
+
+    }
 
     private Map<String, WorldMap> createListofLevels() {
         Map<String, WorldMap> listOfLevels = new HashMap<>();
-        for (int i=0; i<3; i++) {
-            listOfLevels.put("Stage"+(i+1), new WorldMap(20, 40, 5 + 2*i, 6 + 2*i, 3 + i, 1+i ));
+        for (int i = 0; i < 3; i++) {
+            listOfLevels.put("Stage" + (i + 1), new WorldMap(5 + 2 * i, 6 + 2 * i, 3 + i, 1 + i));
         }
         return listOfLevels;
     }
@@ -29,6 +31,7 @@ class Game extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent event) {
         Engine.clearScreen();
+
         char ch = event.getKeyChar();
         System.out.println((int) ch);
 
@@ -46,14 +49,18 @@ class Game extends KeyAdapter {
                 player.playerMove(Coords.RIGHT);
                 break;
         }
-        //player.getCurrentMap().getBoard()[][].setCurrentObject(player);
+        // player.getCurrentMap().getBoard()[][].setCurrentObject(player);
+        for (ActiveObject activeObject : currentMap.getActiveObjects()) {
+            activeObject.performAct();
+        }
+
         currentMap.getBoard()[player.getCoords().getPosY()][player.getCoords().getPosX()].setCurrentObject(player);
 
         UI.displayMap(player.getCurrentMap());
         UI.bottomDisplay(player);
     }
 
-    public Map<String, WorldMap> getListOfLevels(){
+    public Map<String, WorldMap> getListOfLevels() {
         return listOfLevels;
     }
 

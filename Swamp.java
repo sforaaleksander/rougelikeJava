@@ -1,5 +1,5 @@
 
-public class Swamp extends GameObject {
+public class Swamp extends GameObject implements ActiveObject {
     // private
 
     public Swamp(Coords coords) {
@@ -17,18 +17,16 @@ public class Swamp extends GameObject {
         int lastPosX = player.getLastField().getCurrentObject().getCoords().getPosX();
 
         GameObject nextField = findNextField(lastPosY, lastPosX, this.getCoords().getPosY(), this.getCoords().getPosX(),
-        player.getCurrentMap());
+                player.getCurrentMap());
 
-        if (nextField.getName().equals("Grass")){
+        if (nextField.getName().equals("Grass")) {
             player.getCoords().setPosY(nextField.getCoords().getPosY());
             player.getCoords().setPosX(nextField.getCoords().getPosX());
             player.getLastField().setToDefault();
         } else {
-            //game over
+            // game over
         }
-        }
-
-    
+    }
 
     public GameObject findNextField(int lastPosY, int lastPosX, int posY, int posX, WorldMap map) {
         if (lastPosY > posY) {
@@ -51,4 +49,26 @@ public class Swamp extends GameObject {
         return null;
     }
 
+    @Override
+    public void performAct() {
+        // TODO Auto-generated method stub
+
+    }
 }
+
+// @Override
+// public void performAct() {
+//     setLastField(getCurrentMap().getBoard()[this.getCoords().getPosY()][this.getCoords().getPosX()]);
+//     Coords[] listOfCoords = new Coords[] {Coords.RIGHT, Coords.LEFT, Coords.DOWN, Coords.UP}; 
+//     Coords randomCoords = listOfCoords[Engine.randomIntFromRange(0, 3)]; 
+    
+//     int nextY = this.getCoords().getPosY() + randomCoords.getPosY();
+//     int nextX = this.getCoords().getPosX() + randomCoords.getPosX();
+//     this.getCoords().setPosY(nextY);
+//     this.getCoords().setPosX(nextX);
+
+//     currentMap.getBoard()[this.getCoords().getPosY()][this.getCoords().getPosX()].setCurrentObject(this);
+
+//     //getCurrentMap().getBoard()[nextY][nextX].getCurrentObject().interact(this);        
+
+// }
