@@ -14,14 +14,14 @@ class Game extends KeyAdapter {
     public Game(){
         listOfLevels = createListofLevels();
         this.currentMap = listOfLevels.get("Stage1");
-        this.player = new Player();
-        this.player.setCurrentMap(listOfLevels.get("Stage1"));
+        this.player = new Player(currentMap);
+        // this.player.setCurrentMap(listOfLevels.get("Stage1"));
     }    
 
     private Map<String, WorldMap> createListofLevels() {
         Map<String, WorldMap> listOfLevels = new HashMap<>();
         for (int i=0; i<3; i++) {
-            listOfLevels.put("Stage"+i+1, new WorldMap(20, 40, 5 + 2*i, 6 + 2*i, 3 + i, 1+i ));
+            listOfLevels.put("Stage"+(i+1), new WorldMap(20, 40, 5 + 2*i, 6 + 2*i, 3 + i, 1+i ));
         }
         return listOfLevels;
     }

@@ -4,9 +4,10 @@ public class Player extends GameObject {
     private int hp;
     private int collectedDiamonds;
 
-    public Player(){
+    public Player(WorldMap map){
         super("\u259B", Colours.RED , "plejer", new Coords(5, 5));
-        Coords randomCoords = this.getCurrentMap().randomPlacementOnMap(this);
+        this.currentMap = map;
+        Coords randomCoords = currentMap.randomPlacementOnMap(this);
         this.lastField = new Field(new Grass(randomCoords));
         this.hp = 3;
         this.collectedDiamonds = 0;

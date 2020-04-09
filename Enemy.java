@@ -3,8 +3,9 @@ public class Enemy extends GameObject {
     private WorldMap currentMap;
     
 
-    public Enemy(String symbol, String colour, String name, Coords coords) {
+    public Enemy(String symbol, String colour, String name, Coords coords, WorldMap map) {
         super(symbol, colour, name, coords);
+        this.currentMap = map;
         Coords randomCoords = this.getCurrentMap().randomPlacementOnMap(this);
         this.lastField = new Field(new Grass(randomCoords));
     }

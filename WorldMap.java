@@ -25,7 +25,7 @@ public class WorldMap {
         summonHearts();
         summonLavas();
         summonDiamonds();
-        summonEnemies();
+        summonMosquitos();
         this.takenFields = new ArrayList<>();
     }
 
@@ -67,12 +67,12 @@ public class WorldMap {
         return newBoard;
     }
     //TODO make one method and checking fieldsTaken List 
-    private void summonEnemies() {
+    private void summonMosquitos() {
         for (int i = 0; i < numberOfMosquitos; i++) {
             int[] randomPair = randomPair();
-            Mosquito komar = new Mosquito(new Coords(randomPair[0], randomPair[1]));
+            Mosquito komar = new Mosquito(new Coords(randomPair[0], randomPair[1]), this);
             board[randomPair[0]][randomPair[1]] = new Field(komar, new Grass(new Coords(randomPair[0], randomPair[1])));
-            komar.setCurrentMap(this);
+            // komar.setCurrentMap(this);
             activeObjects.add(komar);
         }
     }
