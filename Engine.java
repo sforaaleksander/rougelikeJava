@@ -2,6 +2,15 @@ import javax.swing.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Engine {
+    
+    public static void clearScreen() {
+        try {
+            new ProcessBuilder("clear").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     public static void jFrame(Game giera) {
         JTextField textField = new JTextField();
 

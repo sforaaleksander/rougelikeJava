@@ -16,6 +16,7 @@ class Game extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent event) {
+        Engine.clearScreen();
         char ch = event.getKeyChar();
         System.out.println((int) ch);
 
