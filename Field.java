@@ -8,6 +8,11 @@ public class Field {
         this.defaultObject = defaultObject;
     }
 
+    public Field(GameObject currentObject, GameObject defaultObject){
+        this.currentObject = currentObject;
+        this.defaultObject = defaultObject;
+    }
+
     public GameObject getCurrentObject(){
         return currentObject;
     }
@@ -22,5 +27,10 @@ public class Field {
 
     public void setCurrentObject(GameObject currentObject){
         this.currentObject = currentObject;
+    }
+
+    public void setDefaultObject(GameObject defaultObject){
+        this.currentObject = defaultObject;
+        this.defaultObject = defaultObject;
     }
 }
