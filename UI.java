@@ -18,7 +18,7 @@ public class UI {
         }
 
         collectedDiamonds += 
-        player.getCollectedDiamonds() + "/" + player.getCurrentMap().getRequiredDiamonds()+ " ";
+        player.getCollectedDiamonds() + "/" + player.getCurrentMap().getNumberOfDiamonds()+ " ";
 
         for (int i =0; i<player.getCollectedDiamonds();i++){
             collectedDiamonds += Colours.CYAN + "\u25C6 " + Colours.RESET;

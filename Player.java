@@ -6,9 +6,8 @@ public class Player extends GameObject {
 
     public Player(){
         super("\u259B", Colours.RED , "plejer", new Coords(5, 5));
-        this.currentMap = new WorldMap(20, 40);
         Coords randomCoords = this.getCurrentMap().randomPlacementOnMap(this);
-        this.lastField = new Field(new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", randomCoords));
+        this.lastField = new Field(new Grass(randomCoords));
         this.hp = 3;
         this.collectedDiamonds = 0;
     }

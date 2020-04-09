@@ -1,4 +1,8 @@
 public class Coords {
+    public static final Coords UP = new Coords(-1, 0);
+    public static final Coords DOWN = new Coords(1, 0);
+    public static final Coords LEFT = new Coords(0, -1);
+    public static final Coords RIGHT = new Coords(0, 1);
     private int posY;
     private int posX;
 

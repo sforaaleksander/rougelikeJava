@@ -5,16 +5,28 @@ public class WorldMap {
     private Field[][] board;
     private int width;
     private int height;
-    private List<Field> fieldsList;
-    private int requiredDiamonds; /// TODO sprawdzanie czy gracz zebrał wszyskie diamenty na mapie (czyli czy
-                                  /// gracz ma tyle diamentow ile mapa wymaga zeby przejsc poziom)
+    private List<Field> takenFields;
+    private int numberOfDiamonds;
+    private int numberOfMosquitos;
+    private int numberOfLavas;
+    private int numberOfHearts;
+    private List<GameObject> activeObjects;
 
-    public WorldMap(int height, int width) {
+
+    public WorldMap(int height, int width, int numberOfMosquitos, int numberOfDiamonds, int numberOfLavas, int numberOfHearts) {
         this.width = width;
         this.height = height;
         this.board = createWorldMap(height, width);
-        this.fieldsList = new ArrayList<>();
-
+        this.numberOfDiamonds = numberOfDiamonds;
+        this.numberOfHearts = numberOfHearts;
+        this.numberOfLavas = numberOfLavas;
+        this.numberOfMosquitos = numberOfMosquitos;
+        this.activeObjects = new ArrayList<>();
+        summonHearts();
+        summonLavas();
+        summonDiamonds();
+        summonEnemies();
+        this.takenFields = new ArrayList<>();
     }
 
     public int getWidth() {
@@ -25,16 +37,20 @@ public class WorldMap {
         return height;
     }
 
-    public List<Field> getFieldsList() {
-        return fieldsList;
+    public List<Field> getTakenFields() {
+        return takenFields;
     }
 
-    public void addToFieldsList(Field field) {
-        fieldsList.add(field);
+    public void addToTakenFieldsList(Field field) {
+        takenFields.add(field);
     }
 
     public Field[][] getBoard() {
         return board;
+    }
+
+    public int getNumberOfDiamonds() {
+        return numberOfDiamonds;
     }
 
     public Field[][] createWorldMap(int height, int width) {
@@ -48,37 +64,40 @@ public class WorldMap {
                 }
             }
         }
-        summonGameObjects(newBoard);
         return newBoard;
     }
-
-    public void summonGameObjects(Field[][] board) {
-        summonHarmFields(board);
-        summonItems(board);
-        summonEnemies(board);
-
-    }
-    
-    private void summonEnemies(Field[][] board) {
-        int[] randomPair = randomPair();
-        board[randomPair[0]][randomPair[1]] = new Field(new Mosquito(new Coords(randomPair[0], randomPair[1])),
-                new Grass(new Coords(randomPair[0], randomPair[1])));
+    //TODO make one method and checking fieldsTaken List 
+    private void summonEnemies() {
+        for (int i = 0; i < numberOfMosquitos; i++) {
+            int[] randomPair = randomPair();
+            Mosquito komar = new Mosquito(new Coords(randomPair[0], randomPair[1]));
+            board[randomPair[0]][randomPair[1]] = new Field(komar, new Grass(new Coords(randomPair[0], randomPair[1])));
+            komar.setCurrentMap(this);
+            activeObjects.add(komar);
+        }
     }
 
-    private void summonItems(Field[][] board) {
-        //TODO STROGI REFACTOR TO JEST TYLKO TEST DZIAŁANIA DOMYŚLNIE MA BYĆ PETLA 
-        int[] randomPair = randomPair();
-        board[randomPair[0]][randomPair[1]] = new Field(new Diamond(new Coords(randomPair[0], randomPair[1])),
-                new Grass(new Coords(randomPair[0], randomPair[1])));
-      
-        int[] randomPair4 = randomPair();
-        board[randomPair4[0]][randomPair4[1]] = new Field(new Heart(new Coords(randomPair4[0], randomPair4[1])),
-                new Grass(new Coords(randomPair4[0], randomPair4[1])));
+    private void summonDiamonds() {
+        for (int i = 0; i < numberOfDiamonds; i++) {
+            int[] randomPair = randomPair();
+            board[randomPair[0]][randomPair[1]] = new Field(new Diamond(new Coords(randomPair[0], randomPair[1])),
+                    new Grass(new Coords(randomPair[0], randomPair[1])));
+        }
     }
 
-    public void summonHarmFields(Field[][] board) {
-        int[] randomPair = randomPair();
-        board[randomPair[0]][randomPair[1]] = new Field(new Lava(new Coords(randomPair[0], randomPair[1])));
+    private void summonHearts() {
+        for (int i = 0; i < numberOfHearts; i++) {
+            int[] randomPair4 = randomPair();
+            board[randomPair4[0]][randomPair4[1]] = new Field(new Heart(new Coords(randomPair4[0], randomPair4[1])),
+                    new Grass(new Coords(randomPair4[0], randomPair4[1])));
+        }
+    }
+
+    public void summonLavas() {
+        for (int i = 0; i < numberOfLavas; i++) {
+            int[] randomPair = randomPair();
+            board[randomPair[0]][randomPair[1]] = new Field(new Lava(new Coords(randomPair[0], randomPair[1])));
+        }
     }
 
     public void setCurrentOnMap(GameObject gameObject) {
@@ -106,9 +125,5 @@ public class WorldMap {
         int randomPosY = Engine.randomIntFromRange(1, height - 1);
         int randomPosX = Engine.randomIntFromRange(1, width - 1);
         return new int[] { randomPosY, randomPosX };
-    }
-
-    public int getRequiredDiamonds() {
-        return requiredDiamonds;
     }
 }

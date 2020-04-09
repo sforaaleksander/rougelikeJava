@@ -1,18 +1,30 @@
 import java.util.List;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 class Game extends KeyAdapter {
-    private static final Coords UP = new Coords(-1, 0);
-    private static final Coords DOWN = new Coords(1, 0);
-    private static final Coords LEFT = new Coords(0, -1);
-    private static final Coords RIGHT = new Coords(0, 1);
+    private Map<String, WorldMap> listOfLevels;
     private List<WorldMap> maps;
     private Player player;
+    private WorldMap currentMap;
 
     public Game(){
+        listOfLevels = createListofLevels();
+        this.currentMap = listOfLevels.get("Stage1");
         this.player = new Player();
+        this.player.setCurrentMap(listOfLevels.get("Stage1"));
     }    
+
+    private Map<String, WorldMap> createListofLevels() {
+        Map<String, WorldMap> listOfLevels = new HashMap<>();
+        for (int i=0; i<3; i++) {
+            listOfLevels.put("Stage"+i+1, new WorldMap(20, 40, 5 + 2*i, 6 + 2*i, 3 + i, 1+i ));
+        }
+        return listOfLevels;
+    }
 
     @Override
     public void keyPressed(KeyEvent event) {
@@ -22,27 +34,35 @@ class Game extends KeyAdapter {
 
         switch (ch) {
             case 'w':
-                player.playerMove(UP);
+                player.playerMove(Coords.UP);
                 break;
             case 's':
-                player.playerMove(DOWN);
+                player.playerMove(Coords.DOWN);
                 break;
             case 'a':
-                player.playerMove(LEFT);
+                player.playerMove(Coords.LEFT);
                 break;
             case 'd':
-                player.playerMove(RIGHT);
+                player.playerMove(Coords.RIGHT);
                 break;
         }
-
-        player.getCurrentMap().getBoard()[player.getCoords().getPosY()][player.getCoords().getPosX()].setCurrentObject(player);
+        //player.getCurrentMap().getBoard()[][].setCurrentObject(player);
+        currentMap.getBoard()[player.getCoords().getPosY()][player.getCoords().getPosX()].setCurrentObject(player);
 
         UI.displayMap(player.getCurrentMap());
         UI.bottomDisplay(player);
     }
 
-    public List<WorldMap> getListOfMaps(){
-        return maps;
+    public Map<String, WorldMap> getListOfLevels(){
+        return listOfLevels;
+    }
+
+    public void setCurrentMap(WorldMap currentMap) {
+        this.currentMap = currentMap;
+    }
+
+    public WorldMap getCurrentMap() {
+        return currentMap;
     }
 
 }
