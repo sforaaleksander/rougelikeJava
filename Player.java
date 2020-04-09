@@ -2,6 +2,7 @@ public class Player extends GameObject {
     private WorldMap currentMap;
     private Field lastField;
     private int hp;
+    private int collectedDiamonds;
 
     public Player(){
         super("\u259B", Colours.RED , "plejer", new Coords(5, 5));
@@ -9,6 +10,7 @@ public class Player extends GameObject {
         Coords randomCoords = this.getCurrentMap().randomPlacementOnMap(this);
         this.lastField = new Field(new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", randomCoords));
         this.hp = 3;
+        this.collectedDiamonds = 0;
     }
 
     public int getHp(){
@@ -49,5 +51,14 @@ public class Player extends GameObject {
 
     @Override
     public void interact(Player player) {}
+
+
+    public int getCollectedDiamonds() {
+        return collectedDiamonds;
+    }
+
+    public void setCollectedDiamonds(int collectedDiamonds) {
+        this.collectedDiamonds = collectedDiamonds;
+    }
 
 }
