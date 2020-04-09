@@ -55,10 +55,22 @@ public class WorldMap {
     public void summonGameObjects(Field[][] board) {
         summonHarmFields(board);
         summonItems(board);
+        summonEnemies(board);
+
+    }
+    
+    private void summonEnemies(Field[][] board) {
+        int[] randomPair = randomPair();
+        board[randomPair[0]][randomPair[1]] = new Field(new Enemy("\u259A", Colours.PURPLE, "Komar", new Coords(randomPair[0], randomPair[1])),
+                new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair[0], randomPair[1])));
+        int[] randomPair2 = randomPair();
+        board[randomPair2[0]][randomPair2[1]] = new Field(new Enemy("\u259A", Colours.PURPLE, "Komar", new Coords(randomPair2[0], randomPair2[1])),
+                new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair2[0], randomPair2[1])));
 
     }
 
     private void summonItems(Field[][] board) {
+        //TODO STROGI REFACTOR TO JEST TYLKO TEST DZIAŁANIA DOMYŚLNIE MA BYĆ PETLA 
         int[] randomPair = randomPair();
         board[randomPair[0]][randomPair[1]] = new Field(new Item(new Coords(randomPair[0], randomPair[1])),
                 new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(randomPair[0], randomPair[1])));
