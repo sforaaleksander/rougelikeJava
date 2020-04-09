@@ -1,7 +1,7 @@
 public abstract class Item extends GameObject{
 
-    public Item(String symbol, String name, Coords coords) {
-        super(symbol, name, coords);
+    public Item(String symbol, String colour, String name, Coords coords) {
+        super(symbol, colour, name, coords);
         // TODO Auto-generated constructor stub
     }
 

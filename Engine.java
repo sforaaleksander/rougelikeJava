@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Engine {
@@ -12,4 +13,8 @@ public class Engine {
         jframe.setSize(100, 100);
         jframe.setVisible(true);
     }
+       static int randomIntFromRange(int min, int max) {
+          int randomInt = ThreadLocalRandom.current().nextInt(min, max);
+          return randomInt;
+       }
 }

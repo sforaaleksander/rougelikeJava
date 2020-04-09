@@ -37,6 +37,7 @@ class Game extends KeyAdapter {
         player.getCurrentMap().getBoard()[player.getCoords().getPosY()][player.getCoords().getPosX()].setCurrentObject(player);
 
         UI.displayMap(player.getCurrentMap());
+        UI.bottomDisplay(player);
     }
 
     public List<WorldMap> getListOfMaps(){

@@ -1,18 +1,20 @@
 public class HarmField extends GameObject{
-    private int minusHP;
+    private int damage;
 
 
-    public HarmField(String symbol, String name, Coords coords, int minusHP){
-        super(symbol, name, coords);
-        this.minusHP = minusHP;
+    public HarmField(String symbol, String colour, String name, Coords coords, int damage){
+        super(symbol, colour, name, coords);
+        this.damage = damage;
     }
 
-    public int getMinusHP(){
-        return minusHP;
+    public int getObjectDamage(){
+        return damage;
     }
 
     @Override
     public void interact(Player player) {
-        // take players HP
+        player.minusHp(damage);
+        player.getLastField().setToDefault();		
+
     }
 }

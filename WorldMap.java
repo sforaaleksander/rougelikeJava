@@ -41,12 +41,13 @@ public class WorldMap {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (y == 0 || y == height - 1 || x == 0 || x == width - 1) {
-                    newBoard[y][x] = new Field(new ObstField("#", "Frame", new Coords(y, x)));
+                    newBoard[y][x] = new Field(new ObstField("#", Colours.WHITE_BACKGROUND, "Frame", new Coords(y, x)));
                 } else {
-                    newBoard[y][x] = new Field(new WalkField(".", "Grass", new Coords(y, x)));
+                    newBoard[y][x] = new Field(new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", new Coords(y, x)));
                 }
             }
         }
+        newBoard[9][9] = new Field(new HarmField("X", Colours.PURPLE_BACKGROUND, "DZIURA", new Coords(9, 9), 1));
         return newBoard;
     }
 

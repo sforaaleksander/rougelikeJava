@@ -1,7 +1,7 @@
 public class Enemy extends GameObject {
 
-    public Enemy(String symbol, String name, Coords coords) {
-        super(symbol, name, coords);
+    public Enemy(String symbol, String colour, String name, Coords coords) {
+        super(symbol, colour, name, coords);
         // TODO Auto-generated constructor stub
     }
 

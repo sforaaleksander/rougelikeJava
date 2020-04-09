@@ -1,16 +1,36 @@
 public class Player extends GameObject {
     private WorldMap currentMap;
     private Field lastField;
+    private int hp;
 
     public Player(){
-        super("@", "plejer", new Coords(5, 5));
+        super("\u259B", Colours.RED , "plejer", new Coords(5, 5));
         this.currentMap = new WorldMap(20, 40);
-        this.lastField = new Field(new WalkField(".", "Grass", new Coords(5, 5)));
+        Coords randomCoords = randomPlacementOnMap();
+        this.lastField = new Field(new WalkField(" ", Colours.GREEN_BACKGROUND, "Grass", randomCoords));
+        this.hp = 3;
+    }
+
+    public Coords randomPlacementOnMap(){
+        int randomPosY = Engine.randomIntFromRange(1, this.currentMap.getHeight());
+        int randomPosX = Engine.randomIntFromRange(1, this.currentMap.getWidth());
+        this.getCoords().setPosY(randomPosY);
+        this.getCoords().setPosX(randomPosX);
+        return new Coords(randomPosY, randomPosX);
+    }
+
+    public int getHp(){
+        return hp;
+    }
+
+    public void minusHp(int damage){
+        this.hp -= damage;
     }
 
     public Field getLastField(){
         return lastField;
     }
+
 
     public void setLastField(Field lastField){
         this.lastField = lastField;

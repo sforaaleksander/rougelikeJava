@@ -3,9 +3,11 @@ public abstract class GameObject {
     private String symbol;
     private String name;
     private Coords coords;
+    private String colour;
 
-    public GameObject(String symbol, String name, Coords coords) {
-        this.symbol = symbol;
+    public GameObject(String symbol, String colour, String name, Coords coords) {
+        this.colour = colour;
+        this.symbol = colour + symbol + Colours.RESET;
         this.name = name;
         this.coords = coords;
     }

@@ -7,6 +7,13 @@ public class UI {
             }
             System.out.println("");
         }
-        
+    }
+
+    public static void bottomDisplay(Player player){
+        String hpResult = "HP: ";
+        for (int i =0; i<player.getHp();i++){
+            hpResult += "\u25C6 ";
+        }
+        System.out.println(hpResult);
     }
 }

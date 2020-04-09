@@ -1,7 +1,7 @@
 public class WalkField extends GameObject{    
 
-    public WalkField(String symbol, String name, Coords coords){
-        super(symbol, name, coords);
+    public WalkField(String symbol, String colour, String name, Coords coords){
+        super(symbol, colour, name, coords);
     }
 
 	@Override
