@@ -4,6 +4,7 @@ public class Main{
         Game giera = new Game();
         IO.initializeScanner();
         Engine.jFrame(giera);
+        IO.welcomeScreen();
         
     }
 }

@@ -142,6 +142,7 @@ public class WorldMap {
     }
 
     public int[] randomPair() {
+        //TODO add chceck if not in takenFieldsList?
         int randomPosY = Engine.randomIntFromRange(1, height - 1);
         int randomPosX = Engine.randomIntFromRange(1, width - 1);
         return new int[] { randomPosY, randomPosX };

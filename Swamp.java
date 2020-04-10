@@ -18,7 +18,6 @@ public class Swamp extends GameObject implements ActiveObject {
         int nowPosY = player.getCoords().getPosY();
         int nowPosX = player.getCoords().getPosX();
 
-
         GameObject nextField = findNextField(lastPosY, lastPosX, nowPosY, nowPosX, player.getCurrentMap());
 
         if (nextField.getName().equals("Grass")) {
@@ -65,10 +64,22 @@ public class Swamp extends GameObject implements ActiveObject {
             nextX = this.getCoords().getPosX() + randomCoords.getPosX();
 
         } while (!(nextY > 0 && nextY < currentMap.getHeight() - 1 && nextX > 0 && nextX < currentMap.getWidth() - 1));
+        if (currentMap.getBoard()[nextY][nextX].getCurrentObject() instanceof Diamond) { //TODO IF HEART IT BASICALLY DISSAPEAR SO FAR ONLY DIAMONDS RECREATE
+            //TODO DOWHILE LOOP UNTIL getCurrentMap().getBoard()[randomPair[0]][randomPair[1]] -> getcurrentobj IS INSTANCE OF GRASS
+            int[] randomPair = currentMap.randomPair();
 
+            getCurrentMap().getBoard()[randomPair[0]][randomPair[1]] = new Field(
+                    new Diamond(new Coords(randomPair[0], randomPair[1])),
+                    new Grass(new Coords(randomPair[0], randomPair[1])));
+        }
         this.getCoords().setPosY(nextY);
         this.getCoords().setPosX(nextX);
 
         currentMap.getBoard()[this.getCoords().getPosY()][this.getCoords().getPosX()].setDefaultObject(this);
+
+    }
+
+    public WorldMap getCurrentMap() {
+        return currentMap;
     }
 }

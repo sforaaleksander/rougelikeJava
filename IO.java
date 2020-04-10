@@ -50,4 +50,23 @@ public class IO {
         return userInt;
     }
 
+	public static void welcomeScreen() {
+        Engine.clearScreen();
+        String sampleString = String.join(
+        System.getProperty("line.separator"),
+        "\n\n\n\n\n        ▄▄▄▄       ▄▄▄           ▄████     ███▄    █     ▒█████          ",
+        "        ▓█████▄    ▒████▄        ██▒ ▀█▒    ██ ▀█   █    ▒██▒  ██▒        ",
+        "        ▒██▒ ▄██   ▒██  ▀█▄     ▒██░▄▄▄░   ▓██  ▀█ ██▒   ▒██░  ██▒        ",
+        "        ▒██░█▀     ░██▄▄▄▄██    ░▓█  ██▓   ▓██▒  ▐▌██▒   ▒██   ██░        ",
+        "        ░▓█  ▀█▓    ▓█   ▓██▒   ░▒▓███▀▒   ▒██░   ▓██░   ░ ████▓▒░        ",
+        "        ░▒▓███▀▒    ▒▒   ▓▒█░    ░▒   ▒    ░ ▒░   ▒ ▒    ░ ▒░▒░▒░         ",
+        "        ▒░▒   ░      ▒   ▒▒ ░     ░   ░    ░ ░░   ░ ▒░     ░ ▒ ▒░         ",
+        "         ░               ░  ░         ░             ░        ░ ░          ",
+        "              ░                                                           "
+
+        );
+        System.out.println(sampleString);
+        System.out.println("\n\n\n\t\t\tPRESS ANY KEY TO START GAME!");
+	}
+
 }
