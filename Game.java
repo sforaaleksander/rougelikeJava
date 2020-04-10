@@ -67,6 +67,9 @@ class Game extends KeyAdapter {
             case 'd':
                 player.playerMove(Coords.RIGHT);
                 break;
+            case 'h':
+            player.minusHp(999);;
+            break;
         }
         for (ActiveObject activeObject : currentMap.getActiveObjects()) {
             activeObject.performAct();
@@ -83,7 +86,7 @@ class Game extends KeyAdapter {
     }
 
     public boolean isPlayerAlive() {
-        if (player.getHp() == 0) {
+        if (player.getHp() <= 0) {
             Engine.clearScreen();
             System.out.println("YOU LOST!!");
             return restartGame();

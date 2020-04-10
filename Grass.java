@@ -2,8 +2,9 @@
 public class Grass extends WalkField {
 
     public Grass(Coords coords) {
-        super(" ", Colours.GREEN_BACKGROUND, "Grass", coords);
+        super(" ", Colours.BLACK, "Grass", coords);
         // TODO Auto-generated constructor stub
     }
 
 }
+// 

@@ -14,16 +14,40 @@ public class UI {
         String hpResult = "HP: ";
         String collectedDiamonds = "DIAMONDS: ";
         for (int i =0; i<player.getHp();i++){
-            hpResult += Colours.RED + "\u2764 " + Colours.RESET;
+            hpResult += Colours.WHITE + "\u2605 " + Colours.RESET;
         }
 
         collectedDiamonds += 
         player.getCollectedDiamonds() + "/" + player.getCurrentMap().getNumberOfDiamonds()+ " ";
 
         for (int i =0; i<player.getCollectedDiamonds();i++){
-            collectedDiamonds += Colours.CYAN + "\u25C6 " + Colours.RESET;
+            collectedDiamonds += Colours.YELLOW + "\u25C6 " + Colours.RESET;
         }
         String concatenatedResult = hpResult + "\n" + collectedDiamonds;
         System.out.println(concatenatedResult);
     }
+
+
+	public static void welcomeScreen() {
+        Engine.clearScreen();
+        String sampleString = String.join(
+        System.getProperty("line.separator"),
+        "\n\n\n\n\n        ▄▄▄▄       ▄▄▄           ▄████     ███▄    █     ▒█████          ",
+        "        ▓█████▄    ▒████▄        ██▒ ▀█▒    ██ ▀█   █    ▒██▒  ██▒        ",
+        "        ▒██▒ ▄██   ▒██  ▀█▄     ▒██░▄▄▄░   ▓██  ▀█ ██▒   ▒██░  ██▒        ",
+        "        ▒██░█▀     ░██▄▄▄▄██    ░▓█  ██▓   ▓██▒  ▐▌██▒   ▒██   ██░        ",
+        "        ░▓█  ▀█▓    ▓█   ▓██▒   ░▒▓███▀▒   ▒██░   ▓██░   ░ ████▓▒░        ",
+        "        ░▒▓███▀▒    ▒▒   ▓▒█░    ░▒   ▒    ░ ▒░   ▒ ▒    ░ ▒░▒░▒░         ",
+        "        ▒░▒   ░      ▒   ▒▒ ░     ░   ░    ░ ░░   ░ ▒░     ░ ▒ ▒░         ",
+        "         ░               ░  ░         ░             ░        ░ ░          ",
+        "              ░                                                           "
+
+        );
+        System.out.println(sampleString);
+        System.out.println("\n\n\n\t\t\tPRESS ANY KEY TO START GAME!");
+        System.out.println("\n\nQuick tips:\n\nYou are: " + Colours.RED + "\u2B2E" + Colours.RESET);
+        System.out.println("\nCollect: " + Colours.YELLOW + "\u25C6" + Colours.RESET);
+        System.out.println("\nWatch out for: "+ Colours.GREEN + "\u2739" + Colours.RESET +" and "+ Colours.RED + "\u2592" + Colours.RESET);
+	}
+
 }

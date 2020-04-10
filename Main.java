@@ -5,7 +5,7 @@ public class Main {
         IO.initializeScanner();
         Game giera = new Game();
         Engine.jFrame(giera);
-        IO.welcomeScreen();
+        UI.welcomeScreen();
     }
 
 }
