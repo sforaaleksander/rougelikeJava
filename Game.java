@@ -10,20 +10,23 @@ class Game extends KeyAdapter {
     private List<WorldMap> maps;
     private Player player;
     private WorldMap currentMap;
+    private int currentLvl;    
 
     public Game() {
         listOfLevels = createListofLevels();
         this.currentMap = listOfLevels.get("Stage1");
         this.player = new Player(currentMap);
         // this.player.setCurrentMap(listOfLevels.get("Stage1"));
-        UI.displayMap(player.getCurrentMap());
+        this.currentLvl=1;
+        // uncment below to debug
+        //UI.displayMap(player.getCurrentMap());
 
     }
 
     private Map<String, WorldMap> createListofLevels() {
         Map<String, WorldMap> listOfLevels = new HashMap<>();
-        for (int i = 0; i < 3; i++) {
-            listOfLevels.put("Stage" + (i + 1), new WorldMap(5 + 2 * i, 6 + 2 * i, 3 + i, 1 + i, (2*i+4)));
+        for (int i = 0; i < 2; i++) {
+            listOfLevels.put("Stage" + (i + 1), new WorldMap(10 + 4 * i, 6 + 2 * i, 15 + i*5, 1 + i, (2*i+4)));
         }
         return listOfLevels;
     }
@@ -47,7 +50,8 @@ class Game extends KeyAdapter {
                 player.playerMove(Coords.RIGHT);
                 break;
         }
-
+        //currentMap.getBoard()[player.getCoords().getPosY()][player.getCoords().getPosX()].setCurrentObject(player);
+        //TODO NULL POINTER EXEPTION WHEN GETTING CURRENT MAP BECAUSE WE ARE OUT OF LISTOFMMAPS
         for (ActiveObject activeObject : currentMap.getActiveObjects()) {
             activeObject.performAct();
         }
@@ -56,6 +60,27 @@ class Game extends KeyAdapter {
 
         UI.displayMap(player.getCurrentMap());
         UI.bottomDisplay(player);
+        //TODO create new methods for below ifs
+        if (player.getHp()==0) {
+            Engine.clearScreen();
+            System.out.println("YOU LOST!!");
+            //restart game TODO
+            System.exit(0);
+        }
+        if (player.getCollectedDiamonds() == currentMap.getNumberOfDiamonds()){
+            Engine.clearScreen();
+            if ((getCurrentLvl())<listOfLevels.size()){
+                setCurrentLvl((getCurrentLvl() +1));
+                System.out.println("STAGE " + getCurrentLvl() + " !!\nPress any key to start new stage!");
+                currentMap = listOfLevels.get("Stage"+ getCurrentLvl());
+                player.setCurrentMap(currentMap);
+                player.setCollectedDiamonds(0);
+                return;
+            }    
+            Engine.clearScreen();        
+            System.out.println("YOU WIN!!");
+            System.exit(0);
+        }
     }
 
     public Map<String, WorldMap> getListOfLevels() {
@@ -68,6 +93,14 @@ class Game extends KeyAdapter {
 
     public WorldMap getCurrentMap() {
         return currentMap;
+    }
+
+    public void setCurrentLvl(int currentLvl) {
+        this.currentLvl = currentLvl;
+    }
+
+    public int getCurrentLvl() {
+        return currentLvl;
     }
 
 }

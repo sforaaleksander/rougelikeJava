@@ -23,6 +23,8 @@ public class Enemy extends GameObject implements ActiveObject {
     public void interact(Player player) {
         player.minusHp(1);
         player.getLastField().setToDefault();
+        //player.getCurrentMap().getBoard()[player.getCoords().getPosY()][player.getCoords().getPosX()].setCurrentObject(player);
+    
     }
 
     public void setLastField(Field lastField) {
