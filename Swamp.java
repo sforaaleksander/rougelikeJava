@@ -66,6 +66,13 @@ public class Swamp extends GameObject implements ActiveObject {
 
         } while (!(nextY > 0 && nextY < currentMap.getHeight() - 1 && nextX > 0 && nextX < currentMap.getWidth() - 1));
 
+        if (currentMap.getBoard()[nextY][nextX].getCurrentObject() instanceof Diamond){
+            int[] randomPair = currentMap.randomPair();
+            currentMap.getBoard()[randomPair[0]][randomPair[1]] = new Field(new Diamond(new Coords(randomPair[0], randomPair[1])),
+                    new Grass(new Coords(randomPair[0], randomPair[1])));
+        }
+
+
         this.getCoords().setPosY(nextY);
         this.getCoords().setPosX(nextX);
 
