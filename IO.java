@@ -24,34 +24,4 @@ public class IO {
         } while (!validInput);
         return userInput;
     }
-
-    public static String gatherEmptyInput(String title) {
-        System.out.println(title);
-        String userInput = scan.next().toUpperCase();
-        return userInput;
-    }
-
-
-	public static void welcomeScreen() {
-        Engine.clearScreen();
-        String sampleString = String.join(
-        System.getProperty("line.separator"),
-        "\n\n\n\n\n        ▄▄▄▄       ▄▄▄           ▄████     ███▄    █     ▒█████          ",
-        "        ▓█████▄    ▒████▄        ██▒ ▀█▒    ██ ▀█   █    ▒██▒  ██▒        ",
-        "        ▒██▒ ▄██   ▒██  ▀█▄     ▒██░▄▄▄░   ▓██  ▀█ ██▒   ▒██░  ██▒        ",
-        "        ▒██░█▀     ░██▄▄▄▄██    ░▓█  ██▓   ▓██▒  ▐▌██▒   ▒██   ██░        ",
-        "        ░▓█  ▀█▓    ▓█   ▓██▒   ░▒▓███▀▒   ▒██░   ▓██░   ░ ████▓▒░        ",
-        "        ░▒▓███▀▒    ▒▒   ▓▒█░    ░▒   ▒    ░ ▒░   ▒ ▒    ░ ▒░▒░▒░         ",
-        "        ▒░▒   ░      ▒   ▒▒ ░     ░   ░    ░ ░░   ░ ▒░     ░ ▒ ▒░         ",
-        "         ░               ░  ░         ░             ░        ░ ░          ",
-        "              ░                                                           "
-
-        );
-        System.out.println(sampleString);
-        System.out.println("\n\n\n\t\t\tPRESS ANY KEY TO START GAME!");
-        System.out.println("\n\nQuick tips:\n\nYou are: " + Colours.RED + "\u259B" + Colours.RESET);
-        System.out.println("\nCollect: " + Colours.CYAN + "\u25C6" + Colours.RESET);
-        System.out.println("\nWatch out for: "+ Colours.PURPLE + "\u259A" + Colours.RESET +" and "+ Colours.RED_BACKGROUND_BRIGHT + "\u2592" + Colours.RESET);
-	}
-
 }

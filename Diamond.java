@@ -2,7 +2,7 @@
 public class Diamond extends GameObject implements VanishingObject{
 
 	public Diamond(Coords coords) {
-		super("\u25C6", Colours.YELLOW, "Diamond", coords);
+		super(Object.DIAMOND.symbol, Object.DIAMOND.colour, "Diamond", coords);
 	}
 
 	@Override

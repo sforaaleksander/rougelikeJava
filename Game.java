@@ -1,4 +1,3 @@
-import java.util.List;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Map;
@@ -14,11 +13,9 @@ class Game extends KeyAdapter {
         listOfLevels = createListofLevels();
         this.currentMap = listOfLevels.get("Stage1");
         this.player = new Player(currentMap);
-        // this.player.setCurrentMap(listOfLevels.get("Stage1"));
         this.currentLvl = 1;
-        // uncment below to debug
+        // uncomment below to debug
         // UI.displayMap(player.getCurrentMap());
-
     }
 
     private Map<String, WorldMap> createListofLevels() {

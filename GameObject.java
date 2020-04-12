@@ -36,5 +36,9 @@ public abstract class GameObject {
         this.name = name;
     }
 
+    public String getColour() {
+        return colour;
+    }
+
     public abstract void interact(Player player);
 }

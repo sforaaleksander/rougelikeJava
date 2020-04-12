@@ -27,23 +27,9 @@ public class UI {
         System.out.println(concatenatedResult);
     }
 
-
 	public static void welcomeScreen() {
         Engine.clearScreen();
-        String sampleString = String.join(
-        System.getProperty("line.separator"),
-        "\n\n\n\n\n        ▄▄▄▄       ▄▄▄           ▄████     ███▄    █     ▒█████          ",
-        "        ▓█████▄    ▒████▄        ██▒ ▀█▒    ██ ▀█   █    ▒██▒  ██▒        ",
-        "        ▒██▒ ▄██   ▒██  ▀█▄     ▒██░▄▄▄░   ▓██  ▀█ ██▒   ▒██░  ██▒        ",
-        "        ▒██░█▀     ░██▄▄▄▄██    ░▓█  ██▓   ▓██▒  ▐▌██▒   ▒██   ██░        ",
-        "        ░▓█  ▀█▓    ▓█   ▓██▒   ░▒▓███▀▒   ▒██░   ▓██░   ░ ████▓▒░        ",
-        "        ░▒▓███▀▒    ▒▒   ▓▒█░    ░▒   ▒    ░ ▒░   ▒ ▒    ░ ▒░▒░▒░         ",
-        "        ▒░▒   ░      ▒   ▒▒ ░     ░   ░    ░ ░░   ░ ▒░     ░ ▒ ▒░         ",
-        "         ░               ░  ░         ░             ░        ░ ░          ",
-        "              ░                                                           "
-
-        );
-        System.out.println(sampleString);
+        System.out.println(ASCII.gameTitle);
         System.out.println("\n\n\n\t\t\tPRESS ANY KEY TO START GAME!");
         System.out.println("\n\nQuick tips:\n\nYou are: " + Colours.RED + "\u2B2E" + Colours.RESET);
         System.out.println("\nCollect: " + Colours.YELLOW + "\u25C6" + Colours.RESET);
